@@ -13,8 +13,7 @@ def insert_emp(request):
         EmpDesignation = request.POST['EmpDesignation']
         data = Employee(EmpId=EmpId, EmpName=EmpName, EmpGender=EmpGender, EmpEmail=EmpEmail, EmpDesignation=EmpDesignation)
         data.save()
-
-        return redirect('show/')
+        return redirect('/show')
     else:
         return render(request,'insert.html')
 
@@ -23,7 +22,7 @@ def show_emp(request):
     return render(request,'show.html',{'employees':employees})
 
 def edit_emp(request,pk):
-    employees = Employee.objects.het(id=pk)
+    employees = Employee.objects.get(id=pk)
     if request.method =='POST':
         return redirect('/show')
 
