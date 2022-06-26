@@ -26,11 +26,11 @@ def show_emp(request):
 
 def edit_emp(request,pk):
     employees = Employee.objects.get(id=pk)
-    if request.method =='POST':
+    if request.method == 'POST':
         return redirect('/show')
 
     context = {
-        'employees' : employees,
+        'employees': employees,
     }
 
     return render(request,'edit.html',context)
