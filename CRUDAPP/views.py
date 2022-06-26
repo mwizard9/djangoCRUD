@@ -17,5 +17,9 @@ def insert_emp(request):
         return redirect('show/')
     else:
         return render(request,'insert.html')
+
+def show_emp(request):
+    employees = Employee.objects.all()
+    return render(request,'show.html',{'employees':employees})
         
 
