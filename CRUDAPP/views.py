@@ -21,5 +21,17 @@ def insert_emp(request):
 def show_emp(request):
     employees = Employee.objects.all()
     return render(request,'show.html',{'employees':employees})
+
+def edit_emp(request,pk):
+    employees = Employee.objects.het(id=pk)
+    if request.method =='POST':
+        return redirect('/show')
+
+    context = {
+        'employees' : employees,
+    }
+
+    return render(request,'edit.html',context)
+
         
 
