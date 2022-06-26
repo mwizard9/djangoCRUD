@@ -3,19 +3,22 @@ from django.shortcuts import render, redirect
 from CRUDAPP .models import Employee
 from .models import Employee
 
+
 # Create your views here
+
 def insert_emp(request):
-    if request == "POST":
+    if request.method == "POST":
         EmpId = request.POST['EmpId']
         EmpName = request.POST['EmpName']
         EmpGender = request.POST['EmpGender']
         EmpEmail = request.POST['EmpEmail']
         EmpDesignation = request.POST['EmpDesignation']
-        data = Employee(EmpId=EmpId, EmpName=EmpName, EmpGender=EmpGender, EmpEmail=EmpEmail, EmpDesignation=EmpDesignation)
+        data = Employee(EmpId=EmpId, EmpName=EmpName, EmpGender=EmpGender, EmpEmail=EmpEmail, EmpDesignation= EmpDesignation)
         data.save()
-        return redirect('/show')
+  
+        return redirect('show/')
     else:
-        return render(request,'insert.html')
+        return render(request, 'insert.html')
 
 def show_emp(request):
     employees = Employee.objects.all()
